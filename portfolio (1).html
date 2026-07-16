@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mukkera Sridhar | CSE - Data Science Portfolio</title>
+    
+    <!-- Initials SVG Favicon (MS) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='100%25' height='100%25' fill='%23121212'/%3E%3Ctext x='50%25' y='55%25' font-family='serif' font-size='14' font-weight='bold' fill='%23D4AF37' dominant-baseline='middle' text-anchor='middle'%3EMS%3C/text%3E%3C/svg%3E">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: DM Serif Display & DM Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"DM Serif Display"', 'serif'],
+                        sans: ['"DM Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        charcoal: {
+                            900: '#121212',
+                            800: '#1A1A1A',
+                            700: '#262626',
+                            600: '#3D3D3D',
+                        },
+                        gold: {
+                            50: '#FDFBF7',
+                            100: '#FBF7ED',
+                            200: '#F4EBCE',
+                            300: '#E6D59E',
+                            400: '#D4AF37', /* True Gold */
+                            500: '#C5A028',
+                            600: '#A3801C',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #121212;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 3px;
+        }
+        
+        /* Smooth interactions */
+        .gold-glow {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .gold-glow:hover {
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+            border-color: #D4AF37;
+        }
+    </style>
+</head>
+<body class="bg-charcoal-900 text-zinc-100 font-sans selection:bg-gold-400 selection:text-charcoal-900">
+
+    <div class="min-h-screen flex flex-col lg:flex-row relative">
+        
+        <!-- Left Panel: Fixed Hero & Nav Section -->
+        <aside class="w-full lg:w-[45%] lg:h-screen lg:sticky lg:top-0 bg-charcoal-800 border-b lg:border-b-0 lg:border-r border-charcoal-700 p-8 lg:p-16 flex flex-col justify-between overflow-hidden relative z-10">
+            <!-- Dynamic Data Canvas Background -->
+            <canvas id="networkCanvas" class="absolute inset-0 w-full h-full opacity-30 pointer-events-none"></svg></canvas>
+            
+            <div class="relative z-10 flex flex-col h-full justify-between space-y-12 lg:space-y-0">
+                <!-- Header / Logo -->
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-semibold tracking-[0.2em] text-gold-400 uppercase">PORTFOLIO</span>
+                    <span class="text-xs text-zinc-400 tracking-wider">GCET / CSE-DS</span>
+                </div>
+
+                <!-- Bio Intro (Text-Only Elegant Typography) -->
+                <div class="my-auto py-8">
+                    <h1 class="font-serif text-5xl lg:text-6xl text-zinc-100 leading-tight mb-4">
+                        Mukkera<br>
+                        <span class="text-gold-400 italic">Sridhar</span>
+                    </h1>
+                    <p class="text-gold-300 font-serif text-xl mb-6">CSE - Data Science Undergraduate</p>
+                    <p class="text-zinc-400 leading-relaxed max-w-md text-sm lg:text-base">
+                        An aspiring Data Scientist studying at Geethanjali College of Engineering and Technology. Passionate about machine learning pipelines, deep analytical workflows, and building modern, data-driven solutions.
+                    </p>
+                    
+                    <!-- Quick Contact Links -->
+                    <div class="mt-8 space-y-3">
+                        <a href="mailto:23r11a6777@gcet.edu.in" class="flex items-center space-x-3 text-sm text-zinc-300 hover:text-gold-400 transition-colors group">
+                            <i data-lucide="mail" class="w-4 h-4 text-gold-400 group-hover:scale-110 transition-transform"></i>
+                            <span>23r11a6777@gcet.edu.in</span>
+                        </a>
+                        <a href="tel:+917287891123" class="flex items-center space-x-3 text-sm text-zinc-300 hover:text-gold-400 transition-colors group">
+                            <i data-lucide="phone" class="w-4 h-4 text-gold-400 group-hover:scale-110 transition-transform"></i>
+                            <span>+91 7287891123</span>
+                        </a>
+                        <span class="flex items-center space-x-3 text-sm text-zinc-400">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-gold-400"></i>
+                            <span>Hyderabad, Telangana, India</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Coding Profiles & Footer -->
+                <div class="space-y-6 pt-4 border-t border-charcoal-700/60">
+                    <div class="flex items-center space-x-4">
+                        <a href="https://www.linkedin.com/in/mukkera-sridhar-397b972ab" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-lg bg-charcoal-900 border border-charcoal-700 text-zinc-400 hover:text-gold-400 hover:border-gold-400 transition-all duration-300 flex items-center justify-center" aria-label="LinkedIn Profile">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                        <a href="mailto:23r11a6777@gcet.edu.in" class="p-2.5 rounded-lg bg-charcoal-900 border border-charcoal-700 text-zinc-400 hover:text-gold-400 hover:border-gold-400 transition-all duration-300 flex items-center justify-center" aria-label="Send Email">
+                            <i data-lucide="mail" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                    <div class="text-[11px] text-zinc-500 tracking-wider">
+                        &copy; 2026 Mukkera Sridhar. All rights reserved.
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Right Panel: Scrollable Content Section -->
+        <main class="w-full lg:w-[55%] p-6 md:p-12 lg:p-20 space-y-16 lg:space-y-24 relative">
+            
+            <!-- Skills Section -->
+            <section id="skills" class="space-y-8">
+                <div class="flex items-center space-x-4">
+                    <h2 class="font-serif text-3xl text-zinc-100">Core Expertise</h2>
+                    <div class="h-[1px] flex-grow bg-charcoal-700"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Technical Core -->
+                    <div class="p-6 bg-charcoal-800 border border-charcoal-700 rounded-xl gold-glow space-y-4">
+                        <div class="flex items-center space-x-3 text-gold-400">
+                            <i data-lucide="terminal" class="w-5 h-5"></i>
+                            <h3 class="font-semibold text-zinc-100">Programming & Systems</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-3 py-1.5 bg-charcoal-900 border border-charcoal-700 rounded-md text-xs text-zinc-300 font-mono">Python</span>
+                            <span class="px-3 py-1.5 bg-charcoal-900 border border-charcoal-700 rounded-md text-xs text-zinc-300 font-mono">Java</span>
+                            <span class="px-3 py-1.5 bg-charcoal-900 border border-charcoal-700 rounded-md text-xs text-zinc-300 font-mono">C Language</span>
+                            <span class="px-3 py-1.5 bg-charcoal-900 border border-charcoal-700 rounded-md text-xs text-zinc-300 font-mono">MySQL Databases</span>
+                            <span class="px-3 py-1.5 bg-charcoal-900 border border-charcoal-700 rounded-md text-xs text-zinc-300 font-mono">HTML</span>
+                        </div>
+                    </div>
+
+                    <!-- Professional Qualities -->
+                    <div class="p-6 bg-charcoal-800 border border-charcoal-700 rounded-xl gold-glow space-y-4">
+                        <div class="flex items-center space-x-3 text-gold-400">
+                            <i data-lucide="users" class="w-5 h-5"></i>
+                            <h3 class="font-semibold text-zinc-100">Professional Capabilities</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-3 py-1.5 bg-charcoal-900 border border-charcoal-700 rounded-md text-xs text-zinc-300 font-mono">Team Building</span>
+                            <span class="px-3 py-1.5 bg-charcoal-900 border border-charcoal-700 rounded-md text-xs text-zinc-300 font-mono">Leadership Qualities</span>
+                            <span class="px-3 py-1.5 bg-charcoal-900 border border-charcoal-700 rounded-md text-xs text-zinc-300 font-mono">Good Communication</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Internship Section -->
+            <section id="experience" class="space-y-8">
+                <div class="flex items-center space-x-4">
+                    <h2 class="font-serif text-3xl text-zinc-100">Practical Experience</h2>
+                    <div class="h-[1px] flex-grow bg-charcoal-700"></div>
+                </div>
+
+                <div class="relative pl-6 border-l-2 border-charcoal-700 space-y-8">
+                    <!-- Event marker dot -->
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-charcoal-900 border-2 border-gold-400"></div>
+                    
+                    <div class="space-y-3">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                            <h3 class="font-semibold text-lg text-zinc-100">Data Science Intern</h3>
+                            <span class="text-xs font-mono px-2.5 py-1 rounded bg-gold-400/10 text-gold-400 self-start">May 2025 - June 2025</span>
+                        </div>
+                        <p class="text-sm font-serif text-gold-300">SkillDzire &middot; Hyderabad, Telangana</p>
+                        
+                        <p class="text-sm text-zinc-400 leading-relaxed">
+                            Completed an intensive internship focusing on applied data science mechanics. Gained hands-on competency in compiling Python pipelines, performing deep statistical data analysis, and architecting introductory machine learning models. Built scalable systems around standard data preprocessing protocols and visualizations.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="text-[10px] uppercase tracking-wider text-zinc-500 font-mono">Python</span>
+                            <span class="text-[10px] uppercase tracking-wider text-zinc-500 font-mono">Data Analysis</span>
+                            <span class="text-[10px] uppercase tracking-wider text-zinc-500 font-mono">Machine Learning Workflow</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="space-y-8">
+                <div class="flex items-center space-x-4">
+                    <h2 class="font-serif text-3xl text-zinc-100">Featured Projects</h2>
+                    <div class="h-[1px] flex-grow bg-charcoal-700"></div>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Project 1 -->
+                    <div class="p-6 bg-charcoal-800 border border-charcoal-700 rounded-xl gold-glow space-y-4">
+                        <div class="flex justify-between items-start">
+                            <h3 class="font-semibold text-zinc-100 text-lg">Predictive Academic Performance Analytics</h3>
+                            <a href="https://github.com/mukkera-sridhar-397b972ab" target="_blank" rel="noopener noreferrer" class="text-zinc-400 hover:text-gold-400 transition-colors" aria-label="GitHub Repository">
+                                <i data-lucide="github" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                        <p class="text-sm text-zinc-400 leading-relaxed">
+                            Developed an end-to-end Machine Learning pipeline using Python and Scikit-Learn to evaluate student academic trajectories. The model maps correlations between metrics like session attendance, test grades, and self-guided hours to generate forecasting insights.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-2.5 py-1 bg-charcoal-900 border border-charcoal-700 rounded-md text-xs text-zinc-300 font-mono">Python</span>
+                            <span class="px-2.5 py-1 bg-charcoal-900 border border-charcoal-700 rounded-md text-xs text-zinc-300 font-mono">Scikit-Learn</span>
+                            <span class="px-2.5 py-1 bg-charcoal-900 border border-charcoal-700 rounded-md text-xs text-zinc-300 font-mono">Pandas</span>
+                            <span class="px-2.5 py-1 bg-charcoal-900 border border-charcoal-700 rounded-md text-xs text-zinc-300 font-mono">Matplotlib</span>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="p-6 bg-charcoal-800 border border-charcoal-700 rounded-xl gold-glow space-y-4">
+                        <div class="flex justify-between items-start">
+                            <h3 class="font-semibold text-zinc-100 text-lg">Relational E-Commerce Analytical Engine</h3>
+                            <a href="https://github.com/mukkera-sridhar-397b972ab" target="_blank" rel="noopener noreferrer" class="text-zinc-400 hover:text-gold-400 transition-colors" aria-label="GitHub Repository">
+                                <i data-lucide="github" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                        <p class="text-sm text-zinc-400 leading-relaxed">
+                            Designed high-performance MySQL databases hosting multi-relational structural tables. Crafted complex analytical queries, nested joins, and aggregations to run monthly performance auditing and tracking metrics, optimizing system query latency significantly.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-2.5 py-1 bg-charcoal-900 border border-charcoal-700 rounded-md text-xs text-zinc-300 font-mono">MySQL</span>
+                            <span class="px-2.5 py-1 bg-charcoal-900 border border-charcoal-700 rounded-md text-xs text-zinc-300 font-mono">Python Connector</span>
+                            <span class="px-2.5 py-1 bg-charcoal-900 border border-charcoal-700 rounded-md text-xs text-zinc-300 font-mono">Query Tuning</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Certifications Section -->
+            <section id="certifications" class="space-y-8">
+                <div class="flex items-center space-x-4">
+                    <h2 class="font-serif text-3xl text-zinc-100">Certifications</h2>
+                    <div class="h-[1px] flex-grow bg-charcoal-700"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Cisco Academy -->
+                    <div class="p-6 bg-charcoal-800 border border-charcoal-700 rounded-xl hover:border-gold-400 transition-all duration-300 space-y-4">
+                        <div class="flex items-start justify-between">
+                            <div class="p-2 bg-charcoal-900 rounded-lg text-gold-400">
+                                <i data-lucide="shield-check" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-[10px] font-mono text-zinc-500">CISCO</span>
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="font-semibold text-zinc-100 text-sm">4x Specialization Tracks</h3>
+                            <p class="text-xs text-zinc-400">CISCO Networking Academy</p>
+                        </div>
+                        <p class="text-xs text-zinc-500 leading-relaxed">
+                            Acquired rigorous credentials covering essential concepts in programming languages: C Essentials, Advanced C, Python, and Java.
+                        </p>
+                    </div>
+
+                    <!-- Red Hat Academy -->
+                    <div class="p-6 bg-charcoal-800 border border-charcoal-700 rounded-xl hover:border-gold-400 transition-all duration-300 space-y-4">
+                        <div class="flex items-start justify-between">
+                            <div class="p-2 bg-charcoal-900 rounded-lg text-gold-400">
+                                <i data-lucide="cpu" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-[10px] font-mono text-zinc-500">RED HAT</span>
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="font-semibold text-zinc-100 text-sm">Openshift AI & Python</h3>
+                            <p class="text-xs text-zinc-400">Red Hat Academy</p>
+                        </div>
+                        <p class="text-xs text-zinc-500 leading-relaxed">
+                            Certified in enterprise-level AI workflow pipelines using Red Hat OpenShift, utilizing systemized Python structures.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education Section -->
+            <section id="education" class="space-y-8">
+                <div class="flex items-center space-x-4">
+                    <h2 class="font-serif text-3xl text-zinc-100">Academic Foundation</h2>
+                    <div class="h-[1px] flex-grow bg-charcoal-700"></div>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- College -->
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center p-6 bg-charcoal-800 border border-charcoal-700 rounded-xl gold-glow gap-4">
+                        <div class="space-y-1">
+                            <span class="text-xs text-gold-400 font-mono tracking-wider">2023 - 2027</span>
+                            <h3 class="font-semibold text-lg text-zinc-100">B.Tech in Computer Science - Data Science</h3>
+                            <p class="text-xs text-zinc-400">Geethanjali College of Engineering and Technology &middot; Hyderabad, TS</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-2xl font-serif text-gold-400">8.37</span>
+                            <span class="text-xs text-zinc-500"> /10 CGPA</span>
+                        </div>
+                    </div>
+
+                    <!-- Intermediate -->
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center p-6 bg-charcoal-800 border border-charcoal-700 rounded-xl hover:border-gold-400 transition-all duration-300 gap-4">
+                        <div class="space-y-1">
+                            <span class="text-xs text-zinc-500 font-mono tracking-wider">2021 - 2023</span>
+                            <h3 class="font-semibold text-zinc-100">Intermediate Education</h3>
+                            <p class="text-xs text-zinc-400">Vector Junior College &middot; Nizamabad, TS</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-2xl font-serif text-zinc-300">9.77</span>
+                            <span class="text-xs text-zinc-500"> /10 CGPA</span>
+                        </div>
+                    </div>
+
+                    <!-- School -->
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center p-6 bg-charcoal-800 border border-charcoal-700 rounded-xl hover:border-gold-400 transition-all duration-300 gap-4">
+                        <div class="space-y-1">
+                            <span class="text-xs text-zinc-500 font-mono tracking-wider">Completed 2021</span>
+                            <h3 class="font-semibold text-zinc-100">Secondary School Certificate (SSC)</h3>
+                            <p class="text-xs text-zinc-400">Zilla Parishad High School, Kaligote &middot; Nizamabad, TS</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-2xl font-serif text-zinc-300">10.0</span>
+                            <span class="text-xs text-zinc-500"> /10 CGPA</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Script Operations -->
+    <script>
+        // Init Lucide Icons
+        lucide.createIcons();
+
+        // Canvas Data Animation
+        const canvas = document.getElementById('networkCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let width = canvas.width = canvas.parentElement.offsetWidth;
+        let height = canvas.height = canvas.parentElement.offsetHeight;
+
+        window.addEventListener('resize', () => {
+            if(canvas && canvas.parentElement) {
+                width = canvas.width = canvas.parentElement.offsetWidth;
+                height = canvas.height = canvas.parentElement.offsetHeight;
+            }
+        });
+
+        const particles = [];
+        const maxParticles = 40;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.4;
+                this.vy = (Math.random() - 0.5) * 0.4;
+                this.radius = Math.random() * 2 + 1;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(214, 175, 55, 0.4)';
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < maxParticles; i++) {
+            particles.push(new Particle());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+
+            // Connect lines
+            ctx.strokeStyle = 'rgba(214, 175, 55, 0.08)';
+            ctx.lineWidth = 1;
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dist = Math.hypot(particles[i].x - particles[j].x, particles[i].y - particles[j].y);
+                    if (dist < 100) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
